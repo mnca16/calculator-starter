@@ -1,4 +1,4 @@
-import Grid2 from "@mui/material/Unstable_Grid2";
+import Grid2 from "@mui/material/Unstable_Grid2"
 import {
   Box,
   Paper,
@@ -10,36 +10,39 @@ import {
   Button,
   Divider,
   Typography,
-} from "@mui/material";
-import axios from "axios";
+} from "@mui/material"
+import axios from "axios"
 
-import { useState } from "react";
+import { useState } from "react"
 
 const Calculator = () => {
-  const [operation, setOperation] = useState("");
-  const [result, setResult] = useState("");
+  const [operation, setOperation] = useState("")
+  const [result, setResult] = useState("")
 
   const handleChange = (e) => {
-    setOperation(e.target.value);
-  };
+    setOperation(e.target.value)
+  }
 
   const handleCalculate = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const query = {
       operation: operation,
       first: e.target.first.value,
       second: e.target.second.value,
-    };
+    }
+
+    console.log("query!!!!!!", query)
 
     axios
+      //uses get method to get result but sends data with on api request
       .get(`/api/calculate/${query.operation}/${query.first}/${query.second}`)
       .then((res) => {
-        setResult(res.data.result);
+        setResult(res.data.result)
       })
       .catch((err) => {
-        setResult(err.response.data.message);
-      });
-  };
+        setResult(err.response.data.message)
+      })
+  }
 
   return (
     <form onSubmit={handleCalculate}>
@@ -92,7 +95,6 @@ const Calculator = () => {
         </Grid2>
       </Grid2>
     </form>
-  );
-};
-export default Calculator;
-
+  )
+}
+export default Calculator
