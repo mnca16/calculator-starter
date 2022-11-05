@@ -1,6 +1,6 @@
 import { add, subtract, multiply, divide } from "../utils/calculate"
 
-describe("calculator add test", () => {
+describe("Calculator add test", () => {
   test("adds two number and return", () => {
     expect(add(1, 2)).toBe(3)
   })
@@ -60,7 +60,7 @@ describe("Calcuator subtract test", () => {
   })
 })
 
-describe("Calcuator multiply", () => {
+describe("Calcuator multiply test", () => {
   test("multiply two numbers and return the result", () => {
     expect(multiply(3, 2)).toBe(6)
   })
@@ -94,7 +94,7 @@ describe("Calcuator multiply", () => {
   })
 })
 
-describe("Calcuator subtract", () => {
+describe("Calcuator subtract test", () => {
   test("divide two number and return the division", () => {
     expect(divide(8, 2)).toBe(4)
   })
