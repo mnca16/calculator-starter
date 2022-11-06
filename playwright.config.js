@@ -1,5 +1,6 @@
-import { devices } from "@playwright/test"
+//import { devices } from "@playwright/test";
 import path from "path"
+const { devices } = require("@playwright/test")
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000
@@ -17,6 +18,7 @@ const config = {
   retries: 2,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: "test-results/",
+  fullyParallel: true,
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
@@ -44,13 +46,14 @@ const config = {
 
   projects: [
     {
-      name: "Desktop Chrome",
+      name: "chromium",
+      //name: "Desktop Chrome",
       use: {
         ...devices["Desktop Chrome"],
       },
     },
     {
-      name: "Desktop Firefox",
+      name: "firefox",
       use: {
         ...devices["Desktop Firefox"],
       },
