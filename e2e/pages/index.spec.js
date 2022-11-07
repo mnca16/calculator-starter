@@ -1,4 +1,4 @@
-const { test, expect } = require("@playwright/test")
+const { test, expect } = require("@playwright/test") // --> Module
 
 test.describe("Calculator - operation functionality with integer numbers", () => {
   test("Add Opearion ", async ({ page }) => {
@@ -6,11 +6,18 @@ test.describe("Calculator - operation functionality with integer numbers", () =>
     await page.type("#first", "3")
     await page.type("#second", "4")
     await page.click("#operation")
+    //locates html element
     await page.locator("#operation").selectOption("add")
     await page.click('button[type="submit"]')
 
     const result = page.locator("#result")
     await expect(result).toContainText("7")
+
+    //another way to write lines 13 and 14
+    // await expect(page.locator(#result)).toContainText("7")
+
+    //another way to write line 6 and 7
+    //+await page.locator("#fist").type("3")
   })
 
   test("Subtract Opearion ", async ({ page }) => {

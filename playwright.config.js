@@ -35,6 +35,9 @@ const config = {
     // More information: https://playwright.dev/docs/api/class-testoptions#test-options-base-url
     baseURL,
 
+    //headless true opens your browser, headless does not
+    //headless: true / false
+
     // Retry a test if its failing with enabled tracing. This allows you to analyse the DOM, console logs, network traffic etc.
     // More information: https://playwright.dev/docs/trace-viewer
     trace: "retry-with-trace",
