@@ -10,6 +10,8 @@ const baseURL = `http://localhost:${PORT}`
 
 // Reference: https://playwright.dev/docs/test-configuration
 const config = {
+  fullyParallel: true,
+
   // Timeout per test
   timeout: 30 * 1000,
   // Test directory
@@ -18,7 +20,6 @@ const config = {
   retries: 2,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: "test-results/",
-  fullyParallel: true,
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
