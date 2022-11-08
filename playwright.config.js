@@ -18,7 +18,7 @@ const config = {
   timeout: 30 * 9000,
 
   // Test directory
-  testDir: path.join(__dirname, "e2e"), // testDir: "./e2e/",
+  testDir: "./tests/", //testDir: path.join(__dirname, "e2e"), // testDir: "./e2e/",
 
   // If a test fails, retry it additional 2 times --> helpful for "flaky tests"
   retries: 3,
@@ -54,12 +54,21 @@ const config = {
   projects: [
     {
       name: "chromium",
+      testMatch: /tests\/(api)\/.*(test|spec)\.(js|ts|mjs)/,
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+    {
+      name: "chromium",
+      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
       use: {
         ...devices["Desktop Chrome"],
       },
     },
     {
       name: "firefox",
+      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
       use: {
         ...devices["Desktop Firefox"],
       },
