@@ -1,4 +1,3 @@
-//import { devices } from "@playwright/test";
 import path from "path"
 const { devices } = require("@playwright/test")
 
@@ -8,16 +7,22 @@ const PORT = process.env.PORT || 3000
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`
 
-// Reference: https://playwright.dev/docs/test-configuration
 const config = {
   fullyParallel: true,
 
+  // expect: {
+  //   timeout: 5000,
+  // },
+
   // Timeout per test
-  timeout: 30 * 1000,
+  timeout: 30 * 9000,
+
   // Test directory
-  testDir: path.join(__dirname, "e2e"),
-  // If a test fails, retry it additional 2 times
-  retries: 2,
+  testDir: "./tests/", //testDir: path.join(__dirname, "e2e"), // testDir: "./e2e/",
+
+  // If a test fails, retry it additional 2 times --> helpful for "flaky tests"
+  retries: 3,
+
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: "test-results/",
 
@@ -32,14 +37,12 @@ const config = {
 
   use: {
     // Use baseURL so to make navigations relative.
-    // More information: https://playwright.dev/docs/api/class-testoptions#test-options-base-url
     baseURL,
 
-    //headless true opens your browser, headless does not
+    //headless true opens your browser, headless false does not
     //headless: true / false
 
     // Retry a test if its failing with enabled tracing. This allows you to analyse the DOM, console logs, network traffic etc.
-    // More information: https://playwright.dev/docs/trace-viewer
     trace: "retry-with-trace",
 
     // All available context options: https://playwright.dev/docs/api/class-browser#browser-new-context
@@ -51,13 +54,21 @@ const config = {
   projects: [
     {
       name: "chromium",
-      //name: "Desktop Chrome",
+      testMatch: /tests\/(api)\/.*(test|spec)\.(js|ts|mjs)/,
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+    {
+      name: "chromium",
+      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
       use: {
         ...devices["Desktop Chrome"],
       },
     },
     {
       name: "firefox",
+      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
       use: {
         ...devices["Desktop Firefox"],
       },
