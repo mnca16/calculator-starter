@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test") // --> Module
 
 //There are two ways types of pages to navigate. Pages service based and pages not service based.
 test.describe("Navigation button", () => {
-  test.only("Goes to another page when clicking on PAGE button", async ({
+  test("Goes to another page when clicking on PAGE button", async ({
     page,
   }) => {
     await page.goto("/")
