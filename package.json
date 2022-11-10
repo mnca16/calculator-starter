@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "jest --watch",
     "test:e2e": "playwright test"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "@playwright/test": "^1.27.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "jest": "^29.2.2",
     "jest-environment-jsdom": "^29.3.0"
   }
