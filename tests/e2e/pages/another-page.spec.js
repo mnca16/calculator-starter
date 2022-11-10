@@ -6,15 +6,18 @@ test.describe("Navigation button", () => {
     page,
   }) => {
     await page.goto("/")
-    //await page.waitForNavigation()
     await page.click('button[type="button"]')
 
-    //Grabs the page title
+    //Grabs page title
     console.log(
       "pageTitle test",
       await page.locator("#title-page").textContent()
     )
+    await expect(page).toHaveURL("/another-page")
+  })
 
+  test("Shows text when clicking on 'click me!' button", async ({ page }) => {
+    await page.goto("/another-page")
     await page.locator("#click-me").click()
     console.log(
       "click me btn text",
