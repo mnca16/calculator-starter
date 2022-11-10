@@ -75,7 +75,7 @@ const Calculator = () => {
         </Grid2>
         <Grid2 xs={12}>
           <FormControl fullWidth>
-            <Button variant="contained" type="submit">
+            <Button title="submit" variant="contained" type="submit">
               Calculate
             </Button>
           </FormControl>
@@ -86,7 +86,13 @@ const Calculator = () => {
         <Grid2 xs={12}>
           <Box>
             <Paper>
-              <Typography id="result" align="center" variant="h3" gutterBottom>
+              <Typography
+                id="result"
+                align="center"
+                variant="h3"
+                gutterBottom
+                data-testid="result-id"
+              >
                 {result}
               </Typography>
             </Paper>
