@@ -19,12 +19,6 @@ describe("Simple tests to grab elements of Home component with different query m
     expect(typographyH2Element).toBeInTheDocument()
   })
 
-  it("should render 'click me button' by tittle", () => {
-    render(<Home />)
-    const clickeMeButton = screen.getByTitle("button")
-    expect(clickeMeButton).toBeInTheDocument()
-  })
-
   it("should render The Amazing Calculator text from Home component by id", () => {
     render(<Home />)
     const typographyWithId = screen.getByTestId("header-text")

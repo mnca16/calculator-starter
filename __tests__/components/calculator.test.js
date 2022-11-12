@@ -1,14 +1,27 @@
+import React from "react"
+import { rest } from "msw" // ---> to mock the fetch request
+import { setupServer } from "msw/node" // ---> to mock the fetch request
 import "@testing-library/jest-dom"
-import {
-  render,
-  screen,
-  fireEvent,
-  waitForElement,
-} from "@testing-library/react"
+import { render, screen, fireEvent, cleanup } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import Calculator from "../../components/Calculator"
+//import axiosMock from "axios"
 
-describe("Calculator component Elements", () => {
+//Set up server to test API - line 109
+const server = setupServer(
+  rest.get("http://localhost/api/calculate/*", async (req, res, ctx) => {
+    console.log("Is this working?")
+    return res(ctx.json({ result: "5" }))
+  })
+)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+
+afterEach(cleanup)
+
+describe("Calculator Elements", () => {
   it("Should render button", async () => {
     render(<Calculator />)
     const button = screen.getByRole("button")
@@ -31,7 +44,7 @@ describe("Calculator component Elements", () => {
     expect(inputFieldSecond).toHaveAttribute("type", "text")
   })
 
-  it("should be able to render selector", async () => {
+  it("should be able to render selector and its length", async () => {
     render(<Calculator />)
 
     const selectOperation = screen.getByRole("combobox")
@@ -45,8 +58,8 @@ describe("Calculator component Elements", () => {
   })
 })
 
-describe("Calculator Component functionality", () => {
-  it("should be able to type on input fields", async () => {
+describe("Calculator functionality", () => {
+  it("should be able to type on input fields", () => {
     render(<Calculator />)
 
     const inputFieldFirst = screen.getByLabelText(/First Number/i)
@@ -58,37 +71,55 @@ describe("Calculator Component functionality", () => {
     expect(inputFieldSecond.value).toBe("2")
   })
 
-  it("should allow user to change operation", () => {
-    render(<Calculator />)
-    userEvent.selectOptions(
-      // Find the select element, like a real user would.
-      screen.getByRole("combobox"),
-      // Find and select the add option, like a real user would.
-      screen.getByRole("option", { name: "+" })
-    )
+  describe("should allow user to change operation", () => {
+    function changeUserOperation(userEventOp, selectOp, value) {
+      userEvent.selectOptions(
+        // Find the select element, like a real user would.
+        screen.getByRole("combobox"),
+        // Find and select the add option, like a real user would.
+        screen.getByRole("option", { name: userEventOp })
+      )
 
-    const selectOperation = screen.getByRole("option", { name: "+" })
-    expect(selectOperation.value).toBe("add")
+      const selectOperation = screen.getByRole("option", { name: selectOp })
+      expect(selectOperation.value).toBe(value)
+    }
+
+    it("should allow user to change to addition", () => {
+      render(<Calculator />)
+      changeUserOperation("+", "+", "add")
+    })
+
+    it("should allow user to change to subtraction", () => {
+      render(<Calculator />)
+      changeUserOperation("-", "-", "subtract")
+    })
+
+    it("should allow user to change to multiplication", () => {
+      render(<Calculator />)
+      changeUserOperation("*", "*", "multiply")
+    })
+
+    it("should allow user to change to division", () => {
+      render(<Calculator />)
+      changeUserOperation("/", "/", "divide")
+    })
   })
+})
 
-  // it.only("should be able to add two numbers", async () => {
-  //   render(<Calculator />)
+describe("Calculator Mock API", () => {
+  it("Mock axios api call", async () => {
+    // axiosMock.get.mockResolvedValueOnce({ data: { result: "5" } })
 
-  //   const inputFieldFirst = screen.getByLabelText(/First Number/i)
-  //   fireEvent.change(inputFieldFirst, { target: { value: "3" } })
-  //   console.log("inputFieldFisrt", inputFieldFirst.value)
+    render(<Calculator />)
 
-  //   const inputFieldSecond = screen.getByLabelText(/Second Number/i)
-  //   fireEvent.change(inputFieldSecond, { target: { value: "2" } })
-  //   console.log("inputFieldSecond", inputFieldSecond.value)
+    const buttonElement = screen.getByRole("button")
+    userEvent.click(buttonElement)
 
-  //   const selectOperation = screen.getByRole("combobox")
-  //   fireEvent.click(selectOperation, { option: { name: "add" } })
+    setTimeout(() => {
+      expect(screen.findByTestId("result-id").textContent).toBe("5")
+    }, 1000)
 
-  //   const buttonElement = screen.getByRole("button")
-  //   fireEvent.click(buttonElement)
-
-  //   const result = screen.findByTestId("result-id")
-  //   expect(result.textContent).toBe("5")
-  // })
+    // const result = await waitFor(() => screen.findByTestId("result-id"))
+    // expect(result.textContent).toBe("5")
+  })
 })
