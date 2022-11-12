@@ -13,12 +13,13 @@ const DogList = ({dogAvatar}) => {
     <ListItem>
       <ListItemAvatar>
         <Avatar
+          data-testid="avatar"
           alt="Remy Sharp"
           src={dogAvatar[0]}
           sx={{ width: 56, height: 56, marginRight: 2 }}
         />
       </ListItemAvatar>
-      <ListItemText primary="Monoso" secondary="Mathematics is the music of reason" />
+      <ListItemText data-testid="name" primary="Monoso" secondary="Mathematics is the music of reason" />
     </ListItem>
     <Divider variant="inset" component="li" />
     <ListItem>
