@@ -29,7 +29,7 @@ const config = {
   testDir: "./tests/", //testDir: path.join(__dirname, "e2e"), // testDir: "./e2e/",
 
   // If a test fails, retry it additional 2 times --> helpful for "flaky tests"
-  retries: 3,
+  retries: 2,
 
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: "test-results/",
@@ -74,13 +74,13 @@ const config = {
         ...devices["Desktop Chrome"],
       },
     },
-    {
-      name: "firefox",
-      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
-      use: {
-        ...devices["Desktop Firefox"],
-      },
-    },
+    // {
+    //   name: "firefox",
+    //   testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
+    //   use: {
+    //     ...devices["Desktop Firefox"],
+    //   },
+    // },
     // {
     //   name: 'Desktop Safari',
     //   use: {

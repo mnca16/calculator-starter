@@ -71,7 +71,6 @@ describe("Calculator API test", () => {
     const req = getRequestObject("GET", ["multiply", "abc", "def"])
     const res = getResponseObject()
     handler(req, res)
-    console.log("res", res)
     expect(res._status).toBe(500)
     expect(res._json).toEqual({
       //message: `Failed to process query params. Received: ${req.query.params}`,
