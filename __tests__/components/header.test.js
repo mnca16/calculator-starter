@@ -2,7 +2,7 @@ import "@testing-library/jest-dom"
 import { render, screen } from "@testing-library/react"
 import Header from "../../components/Header"
 
-describe("Should render header navigation buttons ", () => {
+describe("Hedaer component ", () => {
   it("Should render home button and followers button", () => {
     render(<Header />)
     const homeButton = screen.getByTestId("home-button")

@@ -4,36 +4,39 @@ import Header from "../components/Header"
 import DogList from '../components/DogList';
 import axios from "axios";
 
-const AnotherPage = () => {
+const AnotherPage = ({avatar}) => {
   const [showText, setShowText] = useState(false)
-  const [dogAvatar, setDogAvatar] = useState([]);
-  
-  const fetchDogAvatar = () => {
-    axios
-      .get(`https://dog.ceo/api/breeds/image/random/4`)
-      .then((res) => {
-        setDogAvatar(res.data.message);
-      })
-      .catch((err) => {
-        setDogAvatar(err.response.data.message);
-      });
-  };
-  
-  useEffect(() => {
-    fetchDogAvatar();
-  }, [])
-  
+  const [dogAvatar, setDogAvatar] = useState(avatar);
 
+//     const getDogAvatarRes = () =>{ 
+//     //  const response = {
+//     //    avatar: null,
+//     //  }
+//     axios
+//     .get(`https://dog.ceo/api/breeds/image/random/4`)
+//     .then((res) => {
+//       setDogAvatar(res.data.message);
+//      })
+//    .catch((err) => {
+//      setDogAvatar(err.response.data.message);
+//  })};
+
+//  useEffect(() => {
+//   getDogAvatarRes()
+//  }, [])
+    
   const handleClick = () => {
     setShowText(!showText)
   }
 
+  console.log("dog avatar", dogAvatar)
+
   return (
     <>
       <Header/>
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" sx={{marginTop: "2.5rem"}}>
         <Typography id="title-page" variant="h2" gutterBottom sx={{ marginBottom: "30px" }}>
-          Calculator followers!
+          The Amazing Calculator followers!
         </Typography>
         <Stack direction="row" spacing={8}>
         <DogList dogAvatar={dogAvatar}/>
@@ -56,6 +59,34 @@ const DisplayText = () => {
       </Typography>
     </>
 )}
+
+export async function getStaticProps() {
+
+ //   const getDogAvatarRes = () =>{ 
+ //     const response = {
+ //       avatar: null,
+ //     }
+ //    axios
+ //    .get(`https://dog.ceo/api/breeds/image/random/4`)
+ //    .then((res) => {
+ //      setDogAvatar(res.data.message);
+ //     })
+ //   .catch((err) => {
+ //     setDogAvatar(err.response.data.message);
+ // })};
+
+  const res = axios.get(`https://dog.ceo/api/breeds/image/random/4`)
+  const avatar = await res.then((res) => res.data.message)
+  console.log("statticprops", avatar)
+
+  
+  return {
+    props: {
+      avatar,
+    },
+  }
+}
+
  
 export default AnotherPage
  
