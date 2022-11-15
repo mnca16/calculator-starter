@@ -7,17 +7,36 @@ import axios from "axios";
 const AnotherPage = ({avatar}) => {
   const [showText, setShowText] = useState(false)
   const [dogAvatar, setDogAvatar] = useState(avatar);
+
+//     const getDogAvatarRes = () =>{ 
+//     //  const response = {
+//     //    avatar: null,
+//     //  }
+//     axios
+//     .get(`https://dog.ceo/api/breeds/image/random/4`)
+//     .then((res) => {
+//       setDogAvatar(res.data.message);
+//      })
+//    .catch((err) => {
+//      setDogAvatar(err.response.data.message);
+//  })};
+
+//  useEffect(() => {
+//   getDogAvatarRes()
+//  }, [])
     
   const handleClick = () => {
     setShowText(!showText)
   }
 
+  console.log("dog avatar", dogAvatar)
+
   return (
     <>
       <Header/>
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" sx={{marginTop: "2.5rem"}}>
         <Typography id="title-page" variant="h2" gutterBottom sx={{ marginBottom: "30px" }}>
-          Calculator followers!
+          The Amazing Calculator followers!
         </Typography>
         <Stack direction="row" spacing={8}>
         <DogList dogAvatar={dogAvatar}/>
@@ -58,6 +77,7 @@ export async function getStaticProps() {
 
   const res = axios.get(`https://dog.ceo/api/breeds/image/random/4`)
   const avatar = await res.then((res) => res.data.message)
+  console.log("statticprops", avatar)
 
   
   return {
