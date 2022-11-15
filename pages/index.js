@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Typography, Container, Stack, Button } from "@mui/material"
-import Calculator from "../components/calculator"
+import Calculator from "../components/Calculator"
 import Header from "../components/Header"
 
 export default function Home() {
