@@ -2,7 +2,7 @@ import "../styles/globals.css"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 
 import { initialize, mswDecorator } from "msw-storybook-addon"
-import { setupWorker, rest } from "msw"
+//import { setupWorker, rest } from "msw"
 
 initialize()
 
