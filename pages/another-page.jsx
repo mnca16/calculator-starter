@@ -41,7 +41,7 @@ const AnotherPage = ({avatar}) => {
           The Amazing Calculator followers!
         </Typography>
         <Stack direction="row" spacing={8}>
-        {/* <DogList dogAvatar={dogAvatar}/> */}
+        <DogList dogAvatar={dogAvatar}/>
         <Box>
         <Button onClick={handleClick} variant="contained" type="submit" id="click-me" sx={{ marginBottom: "30px" }}>
           Pet me!
