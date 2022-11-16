@@ -9,8 +9,8 @@
     "lint": "next lint",
     "test": "jest --watch",
     "test:e2e": "playwright test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 ",
+    "build-storybook": "build-storybook "
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

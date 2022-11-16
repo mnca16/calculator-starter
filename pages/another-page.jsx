@@ -4,6 +4,8 @@ import Header from "../components/Header"
 import DogList from '../components/DogList';
 import axios from "axios";
 
+
+//In order to test this component with storybook I will need to set up msw first.
 const AnotherPage = ({avatar}) => {
   const [showText, setShowText] = useState(false)
   const [dogAvatar, setDogAvatar] = useState(avatar);
@@ -39,7 +41,7 @@ const AnotherPage = ({avatar}) => {
           The Amazing Calculator followers!
         </Typography>
         <Stack direction="row" spacing={8}>
-        <DogList dogAvatar={dogAvatar}/>
+        {/* <DogList dogAvatar={dogAvatar}/> */}
         <Box>
         <Button onClick={handleClick} variant="contained" type="submit" id="click-me" sx={{ marginBottom: "30px" }}>
           Pet me!

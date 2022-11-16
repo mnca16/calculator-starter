@@ -6,7 +6,7 @@ test.describe("Navigation button", () => {
     page,
   }) => {
     await page.goto("/")
-    await page.click("#followers-button").click()
+    await page.locator("#followers-button").click()
 
     //Grabs page title
     console.log(
