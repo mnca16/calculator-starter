@@ -12,30 +12,18 @@ export default {
 }
 
 export const HomePage = () => <Home/>
-HomePage.parameters = {
-    msw: {
-      handlers: [
-        rest.get('/api/calculate/*', (req, res, ctx) => {
-          return res(ctx.json({result: "20"}));
-        }),
-      ],
-    },
-};
-
-
-
-// const TemplateHome = (args) => <Home {...args}/>  
-
-// export const HomePage = TemplateHome.bind({})
 // HomePage.parameters = {
 //     msw: {
 //       handlers: [
-//         rest.get("http://localhost/api/calculate/*", (req, res, ctx) => {
+//         rest.get('/api/calculate/*', (req, res, ctx) => {
 //           return res(ctx.json({result: "20"}));
 //         }),
 //       ],
 //     },
-   
 // };
+
+
+
+
 
 

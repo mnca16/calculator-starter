@@ -18,14 +18,4 @@ const dogAvatar = [
 ]
 
 export const TemplateAnotherPage = (args, { loaded: {message}}) => <AnotherPage {...args} message={message}/>
-TemplateAnotherPage.args = {message: dogAvatar};
-TemplateAnotherPage.loaders = [
-    async () => {
-        let data = await getStaticProps()
-        return data.props
-    
-    }
-]
-
-//export const AnotherPageStory = () => <AnotherPage/>
-
+TemplateAnotherPage.args = {avatar: dogAvatar};

@@ -37,7 +37,7 @@ export default {
   },
 };
 
-const Template = (args) => <Calculator/>
+const Template = (args) => <Calculator {...args}/>
 
 export const Default = Template.bind({})
 
