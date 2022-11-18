@@ -1,4 +1,4 @@
-import PetmeButton from "../../components/PetmeButton"
+import { PetmeButton } from "../../components/PetmeButton"
 import { within, userEvent } from "@storybook/testing-library"
 import { expect } from "@storybook/jest"
 
@@ -13,11 +13,17 @@ const TemplatePetmeButton = (args) => <PetmeButton {...args}/>
 
 //Stories 
 export const Default = TemplatePetmeButton.bind({})
+Default.args = {
+    label: "Pet me!"
+}
 
 
  
 
 export const Interaction = TemplatePetmeButton.bind({})
+Interaction.args = {
+    label: "Pet me!"
+}
 Interaction.play = async ({canvasElement}) => {
     const canvas = within(canvasElement)
 
@@ -30,10 +36,10 @@ Interaction.play = async ({canvasElement}) => {
 
 export const ButtonControls = TemplatePetmeButton.bind({})
 ButtonControls.args = {
+    label: "Different label",
     primary: true,
     variant: "contained",
-    color: "red",
-    label: "Pet me!", 
-    size: "small"
+    color: "red", 
+    size: "small",
 }
 

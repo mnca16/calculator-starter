@@ -11,8 +11,15 @@ export default {
     msw: {
       handlers: [
         rest.get("/api/calculate/*", (req, res, ctx) => {
-          if (!req.params) {
-            return res(ctx.status(500, "no params"));
+          console.log("req.params", req.params)
+          // if (!req.params) {
+          //   return res(ctx.status(500, "no params"));
+          // }
+          if (req.params[0] == "//") {
+            return res(
+              ctx.status(500, "no params"),
+              ctx.status({ message: "no params"}),
+            );
           }
 
           const params = req.params[0].split("/");
@@ -54,4 +61,16 @@ InteractionsTest.play = async({canvasElement}) => {
     })
 }
 
-//export const Default = () => <Calculator />;
+export const ErrorMessageTest = Template.bind({})
+ErrorMessageTest.play = async({canvasElement}) => {
+    const canvas = within(canvasElement)
+    const form = canvasElement.querySelector("#calculator-form")
+    userEvent.type(form.querySelector("#first"), "a")
+    userEvent.type(form.querySelector("#second"), "b")
+    userEvent.selectOptions(form.querySelector("#operation"), ["add"])
+    userEvent.click(canvas.getByRole("button"))
+    await waitFor(() => {
+        expect(canvasElement.querySelector("#result").innerText).toBe( "Cannot convert object to primitive value")
+    })
+}
+

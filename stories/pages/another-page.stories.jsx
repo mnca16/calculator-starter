@@ -17,5 +17,5 @@ const dogAvatar = [
     "https://images.dog.ceo/breeds/segugio-italian/n02090722_001.jpg",
 ]
 
-export const TemplateAnotherPage = (args, { loaded: {message}}) => <AnotherPage {...args} message={message}/>
+export const TemplateAnotherPage = (args) => <AnotherPage {...args}/>
 TemplateAnotherPage.args = {avatar: dogAvatar};

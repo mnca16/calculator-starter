@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {Button, Typography} from "@mui/material"
+import  PropTypes  from 'prop-types'
 
 
-function PetmeButton() {
+function PetmeButton({label}) {
     const [showText, setShowText] = useState(false)
     
     const handleClick = () => {
@@ -10,15 +11,14 @@ function PetmeButton() {
     }
   return (
     <>
-     <Button onClick={handleClick} variant="variant" type="submit" id="click-me" sx={{ marginBottom: "30px" }}>
-      Pet me!
+     <Button onClick={handleClick} variant="contained" type="submit" id="click-me" sx={{ marginBottom: "30px" }}>
+      {label}
      </Button>
       {showText ? <DisplayText/> : null}
     </>
   )
 }
  
-
 const DisplayText = () => {
     return (
       <>
@@ -29,8 +29,17 @@ const DisplayText = () => {
 )}
 
 
+PetmeButton.propTypes = {
+  /**
+   * Button's name
+   */
+  label: PropTypes.string.isRequired
+};
+
+PetmeButton.defaultProps = {
+  label: "Pet me!"
+};
 
 
 
-
-export default PetmeButton
+export {PetmeButton, DisplayText} 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Typography, Button, Container, Stack, Box} from "@mui/material"
 import Header from "../components/Header"
 import DogList from '../components/DogList'
-import PetmeButton from "../components/PetmeButton"
+import {PetmeButton} from "../components/PetmeButton"
 import axios from "axios";
 
 
