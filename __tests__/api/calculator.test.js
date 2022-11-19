@@ -73,8 +73,8 @@ describe("Calculator API test", () => {
     handler(req, res)
     expect(res._status).toBe(500)
     expect(res._json).toEqual({
-      //message: `Failed to process query params. Received: ${req.query.params}`,
-      message: "Must be a number",
+      message: `Failed to process query params. Received: ${req.query.params}`,
+      //message: "Must be a number",
     })
   })
 })
