@@ -21,7 +21,8 @@ const Calculator = () => {
   const [result, setResult] = useState("")
   const first = useRef<HTMLInputElement>(null)
   const second = useRef<HTMLInputElement>(null)
-
+ 
+  console.log("result", result)
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setOperation(e.target.value)
   }

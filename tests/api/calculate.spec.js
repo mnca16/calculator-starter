@@ -24,4 +24,10 @@ test.describe("Basic API testing with valid input", () => {
     expect(result.ok()).toBeTruthy()
     expect(await result.json()).toEqual({ result: 5 })
   })
+
+  test("can't make a division by zero", async ({ request }) => {
+    const result = await request.get("/api/calculate/divide/8/0", {})
+    expect(result.status(500)).toBeTruthy()
+    expect(await result.json()).toEqual({ message: "Can't divide by zero" })
+  })
 })

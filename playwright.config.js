@@ -74,13 +74,13 @@ const config = {
         ...devices["Desktop Chrome"],
       },
     },
-    // {
-    //   name: "firefox",
-    //   testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
-    //   use: {
-    //     ...devices["Desktop Firefox"],
-    //   },
-    // },
+    {
+      name: "firefox",
+      testMatch: /tests\/(e2e)\/.*(test|spec)\.(js|ts|mjs)/,
+      use: {
+        ...devices["Desktop Firefox"],
+      },
+    },
     // {
     //   name: 'Desktop Safari',
     //   use: {
