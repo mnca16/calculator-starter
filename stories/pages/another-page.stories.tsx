@@ -1,13 +1,13 @@
 import React from "react";
-import { rest } from "msw";
-import  AnotherPage, {getStaticProps} from "../../pages/another-page"
+import  AnotherPage from "../../pages/another-page"
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 
 
 export default {
     title: "Pages/ AnotherPage",
     component:  AnotherPage,
-}
+} as ComponentMeta<typeof AnotherPage>
 
 
 const dogAvatar = [
@@ -17,5 +17,6 @@ const dogAvatar = [
     "https://images.dog.ceo/breeds/segugio-italian/n02090722_001.jpg",
 ]
 
-export const TemplateAnotherPage = (args) => <AnotherPage {...args}/>
-TemplateAnotherPage.args = {avatar: dogAvatar};
+const Template: ComponentStory<typeof AnotherPage> = (args) => <AnotherPage {...args}/>
+export const Default = Template.bind({})
+Default.args = {avatar: dogAvatar};

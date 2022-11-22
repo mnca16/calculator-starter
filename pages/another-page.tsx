@@ -5,9 +5,12 @@ import DogList from '../components/DogList'
 import {PetmeButton} from "../components/PetmeButton"
 import axios from "axios";
 
+type DogAvatar = {
+  avatar: string []
+}
 
 //In order to test this component with storybook I will need to set up msw first.
-const AnotherPage = ({avatar}) => {
+const AnotherPage = ({avatar}: DogAvatar) => {
   const [dogAvatar, setDogAvatar] = useState(avatar);
 
 //     const getDogAvatarRes = () =>{ 

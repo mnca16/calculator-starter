@@ -1,6 +1,6 @@
 import { add, subtract, multiply, divide } from "../utils/calculate"
 
-describe("Calculator add test", () => {
+describe("Calculator add test", () => { 
   test("adds two number and return", () => {
     expect(add(1, 2)).toBe(3)
   })
@@ -11,18 +11,6 @@ describe("Calculator add test", () => {
 
   test("adds one number one float", () => {
     expect(add(1, 0.5)).toBe(1.5)
-  })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      add("a", "b")
-    }).toThrow()
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      add("", "")
-    }).toThrow()
   })
 })
 
@@ -46,18 +34,6 @@ describe("Calcuator subtract test", () => {
   test("Subtracts with negative number first", () => {
     expect(subtract(-1, 5)).toBe(-6)
   })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      subtract("a", "b")
-    }).toThrow()
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      subtract("", "")
-    }).toThrow()
-  })
 })
 
 describe("Calcuator multiply test", () => {
@@ -80,18 +56,6 @@ describe("Calcuator multiply test", () => {
   test("multiply two float numbers", () => {
     expect(multiply(3.5, 3.5)).toBe(12.25)
   })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      multiply("a", "b")
-    }).toThrow()
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      multiply("", "")
-    }).toThrow()
-  })
 })
 
 describe("Calcuator subtract test", () => {
@@ -110,18 +74,6 @@ describe("Calcuator subtract test", () => {
   test("divides by zero and returns an error", () => {
     expect(() => {
       divide(5, 0)
-    }).toThrow()
-  })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      divide("a", "b")
-    }).toThrow()
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      divide("", "")
-    }).toThrow()
+    }).toThrow("Can't divide by zero")
   })
 })

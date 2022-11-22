@@ -1,7 +1,5 @@
 import React from "react";
-import { rest, setupWorker } from "msw";
-//import { whitin, userEvent, findByRole } from "@storybook/testing-library"
-//import { expect } from "@storybook/jest";
+//import { rest, setupWorker } from "msw";
 import Home from "../../pages/index"
 
 
@@ -12,6 +10,7 @@ export default {
 }
 
 export const HomePage = () => <Home/>
+
 // HomePage.parameters = {
 //     msw: {
 //       handlers: [

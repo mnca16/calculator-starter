@@ -1,9 +1,25 @@
 import React, {useState} from 'react'
 import {Button, Typography} from "@mui/material"
-import  PropTypes  from 'prop-types'
 
 
-function PetmeButton({label}) {
+
+interface Label {
+  /**
+   * Button's name
+   */
+   label: string,
+   primary?: true,
+   variant?: string
+   color?: string, 
+   size?: string,
+}
+
+const label: Label= {
+  label: "Pet me!",
+  
+}
+
+function PetmeButton ({label}: Label ) {
     const [showText, setShowText] = useState(false)
     
     const handleClick = () => {
@@ -28,17 +44,11 @@ const DisplayText = () => {
       </>
 )}
 
+PetmeButton.defaultProps = label 
 
-PetmeButton.propTypes = {
-  /**
-   * Button's name
-   */
-  label: PropTypes.string.isRequired
-};
 
-PetmeButton.defaultProps = {
-  label: "Pet me!"
-};
+
+
 
 
 

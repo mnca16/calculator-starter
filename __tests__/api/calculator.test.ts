@@ -7,10 +7,12 @@ dynamic handler api function which would imported from the api file
 */
 
 import handler from "../../pages/api/calculate/[...params]"
+import {RequestObj, ResponseObj} from "../../pages/api/calculate/[...params]"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 describe("Calculator API test", () => {
   test("api gets response status 200 and valid result", () => {
-    const req = getRequestObject("GET", ["add", 2, 1])
+    const req = getRequestObject("GET", ["add", "2", "1"])  
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(200)
@@ -18,7 +20,7 @@ describe("Calculator API test", () => {
   })
 
   test("api gets response 500 and catch error message", () => {
-    const req = getRequestObject("GET", ["invalidOperation", 1, 1])
+    const req = getRequestObject("GET", ["invalidOperation", "1", "1"])
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(500)
@@ -28,7 +30,7 @@ describe("Calculator API test", () => {
   })
 
   test("api gets wrong method and error message", () => {
-    const req = getRequestObject("POST", ["multiply", 5, 5])
+    const req = getRequestObject("POST", ["multiply", "5", "5"])
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(500)
@@ -48,7 +50,7 @@ describe("Calculator API test", () => {
   })
 
   test("api gets less than 3 query parameters and receives error message", () => {
-    const req = getRequestObject("GET", ["multiply", 5])
+    const req = getRequestObject("GET", ["multiply", "5"])
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(500)
@@ -58,7 +60,7 @@ describe("Calculator API test", () => {
   })
 
   test("api gets more than 3 query parameters and receives error message", () => {
-    const req = getRequestObject("GET", ["multiply", 5, 6, 7])
+    const req = getRequestObject("GET", ["multiply", "5", "6", "7"])
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(500)
@@ -73,13 +75,13 @@ describe("Calculator API test", () => {
     handler(req, res)
     expect(res._status).toBe(500)
     expect(res._json).toEqual({
-      //message: `Failed to process query params. Received: ${req.query.params}`,
-      message: "Must be a number",
+      message: `Failed to process query params. Received: ${req.query.params}`,
+      //message: "Must be a number",
     })
   })
 })
 
-const getRequestObject = (method, params) => {
+const getRequestObject = (method: string, params: string[]): RequestObj => {
   const requestHelperObject = {
     method: method,
     query: { params },
@@ -87,15 +89,15 @@ const getRequestObject = (method, params) => {
   return requestHelperObject
 }
 
-const getResponseObject = () => {
+const getResponseObject = (): ResponseObj => {
   const responseHelperObject = {
     _status: null,
     _json: null,
-    status: function (a) {
+    status: function (a: any) {
       this._status = a
       return this
     },
-    json: function (b) {
+    json: function (b: any) {
       this._json = b
       return this
     },

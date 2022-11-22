@@ -1,4 +1,10 @@
-const { test, expect } = require("@playwright/test") // --> Module
+// const { test, expect } = require("@playwright/test") // --> Module
+import { test, expect }  from "@playwright/test" 
+
+/*
+For playwright the only difference I can see is that we need to import
+test and expect instead of declaring them as cosntans 
+*/
 
 //There are two ways types of pages to navigate. Pages service based and pages not service based.
 test.describe("Navigation button", () => {

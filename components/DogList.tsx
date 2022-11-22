@@ -1,7 +1,11 @@
 import React from 'react'
 import { List, ListItem, ListItemText, ListItemAvatar, Avatar, Divider} from "@mui/material"
 
-const DogList = ({dogAvatar}) => {
+type DogAvatar = {
+  dogAvatar: string []
+}
+
+const DogList = ({dogAvatar}: DogAvatar) => {
   return (
     <List
     sx={{
@@ -13,7 +17,7 @@ const DogList = ({dogAvatar}) => {
     <ListItem>
       <ListItemAvatar>
         <Avatar
-          data-testid="avatar"
+          data-testid="dogAvatar"
           alt="Remy Sharp"
           src={dogAvatar[0]}
           sx={{ width: 56, height: 56, marginRight: 2 }}
