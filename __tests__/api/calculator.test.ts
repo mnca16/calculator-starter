@@ -7,10 +7,11 @@ dynamic handler api function which would imported from the api file
 */
 
 import handler from "../../pages/api/calculate/[...params]"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 describe("Calculator API test", () => {
   test("api gets response status 200 and valid result", () => {
-    const req = getRequestObject("GET", ["add", 2, 1])
+    const req = getRequestObject("GET", ["add", 2, 1])  
     const res = getResponseObject()
     handler(req, res)
     expect(res._status).toBe(200)
@@ -79,7 +80,7 @@ describe("Calculator API test", () => {
   })
 })
 
-const getRequestObject = (method, params) => {
+const getRequestObject = (method: string, params: (string | number)[]) => {
   const requestHelperObject = {
     method: method,
     query: { params },
@@ -91,11 +92,11 @@ const getResponseObject = () => {
   const responseHelperObject = {
     _status: null,
     _json: null,
-    status: function (a) {
+    status: function (a: null) {
       this._status = a
       return this
     },
-    json: function (b) {
+    json: function (b: null) {
       this._json = b
       return this
     },

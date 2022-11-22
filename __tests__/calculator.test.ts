@@ -1,6 +1,6 @@
 import { add, subtract, multiply, divide } from "../utils/calculate"
 
-describe("Calculator add test", () => {
+describe("Calculator add test", () => { 
   test("adds two number and return", () => {
     expect(add(1, 2)).toBe(3)
   })
@@ -53,11 +53,11 @@ describe("Calcuator subtract test", () => {
     }).toThrow("Enter only numbers")
   })
 
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      subtract("", "")
-    }).toThrow("Enter only numbers")
-  })
+  // test("Thrwos an error if input is empty", () => {
+  //   expect(() => {
+  //     subtract("", "")
+  //   }).toThrow("Enter only numbers")
+  // })
 })
 
 describe("Calcuator multiply test", () => {

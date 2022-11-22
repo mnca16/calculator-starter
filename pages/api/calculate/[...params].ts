@@ -1,7 +1,21 @@
 import { add, subtract, multiply, divide } from "../../../utils/calculate"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse): void{
+
+interface Req extends NextApiRequest {
+  //fun?: (method: string, params: (string | number)[]) => {},
+  req: {
+    method: string,
+    query: { params: (string | number)[] }
+  },
+}
+
+type Res = {
+
+}
+
+//export default function handler(req: Req, res: NextApiResponse): void{
+export default function handler(req: NextApiRequest | any, res: NextApiResponse | any): void{
   try {
     if (req.method !== "GET") {
       throw new Error(
@@ -15,7 +29,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse): void
     "Argument of type 'string | string[]' is not assignable to parameter of type 'string[]'.
     Type 'string' is not assignable to type 'string[]'.""
 
-    NOTE: Next.js know that the req can be a string or a string array.
+    NOTE: Next.js know that the req can be a string or a string array. 
 
     ------------------//------------------------------------//-----------------------------
     

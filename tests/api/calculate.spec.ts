@@ -1,4 +1,5 @@
-const { test, expect } = require("@playwright/test")
+//const { test, expect } = require("@playwright/test")
+import { test, expect }  from "@playwright/test"
 
 test.describe("Basic API testing with valid input", () => {
   test("simple addition", async ({ request }) => {
@@ -27,7 +28,7 @@ test.describe("Basic API testing with valid input", () => {
 
   test("can't make a division by zero", async ({ request }) => {
     const result = await request.get("/api/calculate/divide/8/0", {})
-    expect(result.status(500)).toBeTruthy()
+    expect(result.status()).toBe(500)
     expect(await result.json()).toEqual({ message: "Can't divide by zero" })
   })
 })

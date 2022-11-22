@@ -1,6 +1,23 @@
-const { test, expect } = require("@playwright/test") // --> Module
+//const { test, expect } = require("@playwright/test") // --> Module
+import {expect, test} from "@playwright/test"
 
-async function operationTest(page, first, second, type) {
+// type OpearationParams = {
+//   page: any,
+//   first: string,
+//   second: string,
+//   type: string
+// }
+
+//async function operationTest({params}: OpearationParams) {
+//   await params.page.goto("/")
+//   await params.page.type("#first", params.first)
+//   await params.page.type("#second", params.second)
+//   await params.page.click("#operation")
+//   await params.page.locator("#operation").selectOption(params.type)
+//   await params.page.click('button[type="submit"]')
+// }
+
+async function operationTest(page: any, first: string, second: string, type: string ) {
   await page.goto("/")
   await page.type("#first", first)
   await page.type("#second", second)

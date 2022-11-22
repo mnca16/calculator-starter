@@ -21,6 +21,7 @@ const customJestConfig = {
     "<rootDir>/__tests__/components",
   ],
   //testMatch:["<rootDir>/__tests__/calculator", "<rootDir>/__tests__/api/calculator"]
+  preset: "ts-jest",
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
