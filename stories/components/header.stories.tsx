@@ -1,4 +1,5 @@
 import Header from "../../components/Header"
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
     title: "Components/Header",
@@ -14,8 +15,8 @@ export default {
         },
       },
 
-}
+} as ComponentMeta<typeof Header>
 
-const TemplateHeader = (args) => <Header {...args}/>
+const TemplateHeader: ComponentStory<typeof Header> = (args) => <Header/>
 
-export const HedaerComponent = () => <Header/>
+export const Default =  TemplateHeader.bind({})

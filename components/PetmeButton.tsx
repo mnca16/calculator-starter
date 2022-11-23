@@ -1,17 +1,22 @@
 import React, {useState} from 'react'
 import {Button, Typography} from "@mui/material"
-import  PropTypes  from 'prop-types'
+
 
 
 interface Label {
   /**
    * Button's name
    */
-   label: string
+   label: string,
+   primary?: true,
+   variant?: string
+   color?: string, 
+   size?: string,
 }
 
 const label: Label= {
-  label: "Pet me!"
+  label: "Pet me!",
+  
 }
 
 function PetmeButton ({label}: Label ) {

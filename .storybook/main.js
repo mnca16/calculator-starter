@@ -17,4 +17,8 @@ module.exports = {
   features: {
     interactionsDebugger: true,
   },
+  typescript: {
+    reactDocgen: false,
+    check: true,
+  },
 }

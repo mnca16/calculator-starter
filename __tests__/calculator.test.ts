@@ -12,18 +12,6 @@ describe("Calculator add test", () => {
   test("adds one number one float", () => {
     expect(add(1, 0.5)).toBe(1.5)
   })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      add("a", "b")
-    }).toThrow("Enter only numbers")
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      add("", "")
-    }).toThrow("Enter only numbers")
-  })
 })
 
 describe("Calcuator subtract test", () => {
@@ -46,18 +34,6 @@ describe("Calcuator subtract test", () => {
   test("Subtracts with negative number first", () => {
     expect(subtract(-1, 5)).toBe(-6)
   })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      subtract("a", "b")
-    }).toThrow("Enter only numbers")
-  })
-
-  // test("Thrwos an error if input is empty", () => {
-  //   expect(() => {
-  //     subtract("", "")
-  //   }).toThrow("Enter only numbers")
-  // })
 })
 
 describe("Calcuator multiply test", () => {
@@ -80,18 +56,6 @@ describe("Calcuator multiply test", () => {
   test("multiply two float numbers", () => {
     expect(multiply(3.5, 3.5)).toBe(12.25)
   })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      multiply("a", "b")
-    }).toThrow("Enter only numbers")
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      multiply("", "")
-    }).toThrow("Enter only numbers")
-  })
 })
 
 describe("Calcuator subtract test", () => {
@@ -111,17 +75,5 @@ describe("Calcuator subtract test", () => {
     expect(() => {
       divide(5, 0)
     }).toThrow("Can't divide by zero")
-  })
-
-  test("Thrwos an error if input is not a number", () => {
-    expect(() => {
-      divide("a", "b")
-    }).toThrow("Enter only numbers")
-  })
-
-  test("Thrwos an error if input is empty", () => {
-    expect(() => {
-      divide("", "")
-    }).toThrow("Enter only numbers")
   })
 })

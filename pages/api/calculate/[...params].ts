@@ -2,20 +2,36 @@ import { add, subtract, multiply, divide } from "../../../utils/calculate"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 
-interface Req extends NextApiRequest {
-  //fun?: (method: string, params: (string | number)[]) => {},
-  req: {
-    method: string,
-    query: { params: (string | number)[] }
-  },
+// interface Req extends NextApiRequest {
+//   req: {
+//     method: string,
+//     query: { params: (string | number)[] }
+//   },
+// }
+
+// type Res = {
+//  _status?: null,
+//  _json?: null,
+//  status?: Function,
+//  result?: number
+//  message?: string
+// }
+
+
+export type RequestObj = {
+  method: string,
+  query: { params: string[]}
 }
 
-type Res = {
-
+export type ResponseObj = {
+  _status: null,
+  _json: null,
+  status: Function,
+  json: Function
 }
 
-//export default function handler(req: Req, res: NextApiResponse): void{
-export default function handler(req: NextApiRequest | any, res: NextApiResponse | any): void{
+//export default function handler(req: Req, res: NextApiResponse<Res>): void{
+export default function handler(req: NextApiRequest | RequestObj, res: NextApiResponse | ResponseObj): void{
   try {
     if (req.method !== "GET") {
       throw new Error(
@@ -46,7 +62,7 @@ export default function handler(req: NextApiRequest | any, res: NextApiResponse 
      -first: Declare a variable with sting[] | string type
       let parameters: string[] | string= req.query.params 
      -second: Modify extra params function to receive the same params 
-      unction extractParams(queryParams: string[] | sting): CalculatorQueryParams{
+      function extractParams(queryParams: string[] | sting): CalculatorQueryParams{
 
     */
 
@@ -55,8 +71,10 @@ export default function handler(req: NextApiRequest | any, res: NextApiResponse 
     if (!Array.isArray(queryParamameters)) {
       throw new Error(`Query params should have 3 items. Received ${queryParamameters}`)
     }
+    
+    //let parameters: string[] | string = req.query.params
 
-    const params = extractParams(queryParamameters)
+    let params  = extractParams(queryParamameters)
     let result: number
     switch (params.operation) {
       case "add":
@@ -87,6 +105,8 @@ operation: string,
 first: number,
 second: number,
 }
+
+
 
 function extractParams(queryParams: string[]): CalculatorQueryParams{
   console.log("queryParams", queryParams) 

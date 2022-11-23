@@ -1,5 +1,6 @@
 // jest.config.js
 const nextJest = require("next/jest")
+//import nextJest from "next/jest"
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
@@ -22,6 +23,7 @@ const customJestConfig = {
   ],
   //testMatch:["<rootDir>/__tests__/calculator", "<rootDir>/__tests__/api/calculator"]
   preset: "ts-jest",
+  verbose: true,
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
